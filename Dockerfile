@@ -22,6 +22,9 @@ RUN chmod +x /opt/nvidia/entrypoint.d/71-startup-ssh.sh
 ADD 72-setup-root.sh /opt/nvidia/entrypoint.d/
 RUN chmod +x /opt/nvidia/entrypoint.d/72-setup-root.sh
 
+RUN mkdir -vp $(python -m site --user-site)
+RUN pip config set global.target $(python -m site --user-site)
+
 WORKDIR /workspace
 
 EXPOSE 6006

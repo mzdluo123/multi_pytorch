@@ -6,3 +6,4 @@ fi
 
 rm -rf /root/
 ln -s /data /root
+ln -s /data /workspace
