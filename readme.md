@@ -16,8 +16,7 @@ sudo docker build . -t rc_dl:1
 sudo docker run --rm -it -d --name=rc --gpus all --ipc=host \
 --ulimit memlock=-1 --ulimit stack=67108864 \
 --ip=192.168.20.100 --network mac1 \
--e ROOT_PWD="123456" \
--v /high_speed_data:/high_speed_data \
+-e PASSWORD="123456" \
 -v /data:/data \
 rc_dl:1
 ```
