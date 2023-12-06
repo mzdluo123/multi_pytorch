@@ -16,8 +16,8 @@ RUN pip3 install -r /tmp/requirements.txt
 
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
 
-ADD 71-stetup-password.sh /opt/nvidia/entrypoint.d/
-RUN chmod +x /opt/nvidia/entrypoint.d/71-stetup-password.sh
+ADD 71-setup-password.sh /opt/nvidia/entrypoint.d/
+RUN chmod +x /opt/nvidia/entrypoint.d/71-setup-password.sh
 
 ADD 2-setup-root.sh /opt/nvidia/entrypoint.d/
 RUN chmod +x /opt/nvidia/entrypoint.d/2-setup-root.sh
