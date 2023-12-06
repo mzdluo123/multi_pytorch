@@ -16,19 +16,25 @@ RUN pip3 install -r /tmp/requirements.txt
 
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config 
 
-ADD 71-startup-ssh.sh /opt/nvidia/entrypoint.d/
-RUN chmod +x /opt/nvidia/entrypoint.d/71-startup-ssh.sh
+ADD 71-stetup-password.sh /opt/nvidia/entrypoint.d/
+RUN chmod +x /opt/nvidia/entrypoint.d/71-stetup-password.sh
 
-ADD 72-setup-root.sh /opt/nvidia/entrypoint.d/
-RUN chmod +x /opt/nvidia/entrypoint.d/72-setup-root.sh
+ADD 2-setup-root.sh /opt/nvidia/entrypoint.d/
+RUN chmod +x /opt/nvidia/entrypoint.d/2-setup-root.sh
+
+ADD run-jupyterlab.sh /bin/
+RUN chmod +x /bin/run-jupyterlab.sh
+
 
 RUN mkdir -vp $(python -m site --user-site)
 RUN pip config set global.target $(python -m site --user-site)
 
+RUN mv /root /root_old
 WORKDIR /workspace
 
 EXPOSE 6006
 EXPOSE 8008
+EXPOSE 8888
 EXPOSE 22
 
 ENV PASSWORD=123456

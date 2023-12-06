@@ -20,3 +20,14 @@ sudo docker run -it -d --name=rc --gpus all --ipc=host \
 -v /data:/data \
 rc_dl:1
 ```
+
+# jupyterlab
+
+```
+sudo docker run -it -d --name=rc --gpus all --ipc=host \
+--ulimit memlock=-1 --ulimit stack=67108864 \
+--ip=192.168.20.100 --network mac1 \
+-e PASSWORD="123456" \
+-v /data:/data \
+rc_dl:1 run-jupyterlab.sh
+```

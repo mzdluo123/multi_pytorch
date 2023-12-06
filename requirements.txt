@@ -1,2 +1,4 @@
 lightning
 transformers
+python-lsp-server[all]
+jupyterlab-lsp
